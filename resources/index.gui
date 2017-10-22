@@ -1,0 +1,76 @@
+<svg class="background">
+  <section x="131" y="0%" width="217" height="100%">
+    <text id="myDay" />
+    <text id="myHour" />
+    <text id="myMinute" />
+    <text id="mySecond" />
+    <text id="myDate" />
+  </section>
+  <line x1="130" y1="0%+5" x2="130" y2="100%-5" fill="#808080" stroke-width="1" />
+  <mask id="mask">
+    <rect x="10" y="5" width="100" height="2" />
+  </mask>
+  <section x="0%" y="0%" width="130" height="50">
+    <svg mask="#mask" width="100%" height="100%">
+      <gradientRect 
+        width="100%" height="100%"
+        gradient-type="linear"
+        gradient-x1="0" gradient-y1="0"
+        gradient-x2="90" gradient-y2="0"
+        gradient-color1="#4edcfb" gradient-color2="#ff0000"
+      />
+     </svg>
+    <image x="90" y="15" width="20" height="20" href="footsteps-silhouette2.png" />
+    <rect id="stepsRect" x="10" y="5" width="100" height="2" fill="#333333" />
+    <text id="mySteps" />
+  </section>
+  <section x="0%" y="51" width="130" height="50">
+    <svg mask="#mask" width="100%" height="100%">
+      <gradientRect 
+        width="100%" height="100%"
+        gradient-type="linear"
+        gradient-x1="0" gradient-y1="0"
+        gradient-x2="90" gradient-y2="0"
+        gradient-color1="#ff9d00" gradient-color2="#ff0000"
+      />
+     </svg>
+    <image x="97" y="15" width="13" height="20" href="purepulse-calorie2.png" />
+    <rect id="calsRect" x="10" y="5" width="100" height="2" fill="#333333" />
+    <text id="myCals" />
+  </section>
+  <section x="0%" y="101" width="130" height="50">
+    <svg mask="#mask" width="100%" height="100%">
+      <gradientRect 
+        width="100%" height="100%"
+        gradient-type="linear"
+        gradient-x1="0" gradient-y1="0"
+        gradient-x2="90" gradient-y2="0"
+        gradient-color1="#17f30c" gradient-color2="#ff0000"
+      />
+     </svg>
+    <image x="90" y="15" width="20" height="20" href="stairs2.png" />
+    <rect id="stairsRect" x="10" y="5" width="100" height="2" fill="#333333" />
+    <text id="myStairs" />
+  </section>
+  <section x="0%" y="151" width="130" height="50">
+    <svg mask="#mask" width="100%" height="100%">
+      <gradientRect 
+        width="100%" height="100%"
+        gradient-type="linear"
+        gradient-x1="0" gradient-y1="0"
+        gradient-x2="90" gradient-y2="0"
+        gradient-color1="#b400ff" gradient-color2="#ff0000"
+      />
+     </svg>
+    <image x="90" y="15" width="20" height="20" href="flash2.png" />
+    <rect id="minsRect" x="10" y="5" width="100" height="2" fill="#333333" />
+    <text id="myMins" />
+  </section>
+  <section x="0%" y="200" width="130" height="50">
+    <arc x="60" y="0" width="50" height="50" fill="#333333" arc-width="2" start-angle="2" sweep-angle="360" />
+    <arc id="hrtArc" x="60" y="0" width="50" height="50" fill="#c00000" arc-width="2" start-angle="2" sweep-angle="0" /> 
+    <image x="71" y="12" width="30" height="30" href="Twemoji.png" />
+    <text id="myHR" />
+    <image x="0" y="0" width="120" height="50" href="transparent.png" />
+  </section>
+</svg>
