@@ -35,18 +35,18 @@ weekday[4] = "DONNERSTAG";
 weekday[5] = "FREITAG";
 weekday[6] = "SAMSTAG";
 var monthName = new Array(12);
-monthName[0]  = "JANUAR";
-monthName[1]  = "FEBRUAR";
-monthName[2]  = "MÄRZ";
-monthName[3]  = "APRIL";
-monthName[4]  = "MAI";
-monthName[5]  = "JUNI";
-monthName[6]  = "JULI";
-monthName[7]  = "AUGUST";
-monthName[8]  = "SEPTEMBER";
-monthName[9]  = "OKTOBER";
-monthName[10] = "NOVEMBER";
-monthName[11] = "DEZEMBER";
+monthName[1]  = "JANUAR";
+monthName[2]  = "FEBRUAR";
+monthName[3]  = "MÄRZ";
+monthName[4]  = "APRIL";
+monthName[5]  = "MAI";
+monthName[6]  = "JUNI";
+monthName[7]  = "JULI";
+monthName[8]  = "AUGUST";
+monthName[9]  = "SEPTEMBER";
+monthName[10] = "OKTOBER";
+monthName[11] = "NOVEMBER";
+monthName[12] = "DEZEMBER";
 
 function updateStats() {
   // Get Goals to reach and curent values
@@ -63,28 +63,9 @@ function updateStats() {
   const metricElevation = "elevationGain";
   const amountElevation = userActivity.today.adjusted[metricElevation] || 0
   const elevationGoal = userActivity.goals[metricElevation];
-  let stepString = amountSteps;
-  let calString = amountCals;
-  if ( amountSteps > 999 ) {
-    let dotFill = ".";
-    let hundreds = amountSteps-Math.floor(amountSteps/1000)*1000;
-    if ( hundreds < 10 ) {
-      dotFill =".00";
-    } else if ( hundreds < 100 ) {
-      dotFill = ".0";
-    }
-    stepString = Math.floor(amountSteps/1000) + dotFill + hundreds;
-  }
-  if ( amountCals > 999 ) {
-    let dotFill = ".";
-    let hundreds = amountCals-Math.floor(amountCals/1000)*1000;
-    if ( hundreds < 10 ) {
-      dotFill =".00";
-    } else if ( hundreds < 100 ) {
-      dotFill = ".0";
-    }
-    calString = Math.floor(amountCals/1000) + dotFill + hundreds;
-  }
+  let stepString = util.thsdDot(amountSteps);//amountSteps;
+  let calString = util.thsdDot(amountCals);
+  // The delivered values for caloriesGoal and elevationGoal are strange... thus a (personal) correction - if necessary
   if (caloriesGoal > 5000) {
     caloriesGoal = 3029;
   }

@@ -6,6 +6,21 @@ export function zeroPad(i) {
   return i;
 }
 
+export function thsdDot(num) {
+  var retString = num;
+  if ( num > 999 ) {
+    let dotFill = ".";
+    let hundreds = num-Math.floor(num/1000)*1000;
+    if ( hundreds < 10 ) {
+      dotFill =".00";
+    } else if ( hundreds < 100 ) {
+      dotFill = ".0";
+    }
+    retString = Math.floor(num/1000) + dotFill + hundreds;
+  }
+  return retString;
+}
+
 export function monoDigits(digits) {
   var ret = "";
   var str = digits.toString();
