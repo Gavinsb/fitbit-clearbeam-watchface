@@ -2,9 +2,11 @@
   <section x="131" y="0%" width="217" height="100%">
     <text id="myDay" />
     <text id="myHour" />
+    <text id="myBattery" />
     <text id="myMinute" />
     <text id="mySecond" />
     <text id="myDate" />
+    <image x="160" y="7" width="55" height="25" opacity="0" href="battery.png" />
   </section>
   <line x1="130" y1="0%+5" x2="130" y2="100%-5" fill="#808080" stroke-width="1" />
   <mask id="mask">
@@ -12,12 +14,13 @@
   </mask>
   <section x="0%" y="0%" width="130" height="50">
     <svg mask="#mask" width="100%" height="100%">
-      <gradientRect 
+      <gradientRect
+        id="stepGradient"
         width="100%" height="100%"
         gradient-type="linear"
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
-        gradient-color1="#4edcfb" gradient-color2="#ff0000"
+        gradient-color1="#fffc27" gradient-color2="#ff0000"
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="footsteps-silhouette2.png" />
@@ -26,7 +29,8 @@
   </section>
   <section x="0%" y="51" width="130" height="50">
     <svg mask="#mask" width="100%" height="100%">
-      <gradientRect 
+      <gradientRect
+        id="calGradient"
         width="100%" height="100%"
         gradient-type="linear"
         gradient-x1="0" gradient-y1="0"
@@ -41,11 +45,12 @@
   <section x="0%" y="101" width="130" height="50">
     <svg mask="#mask" width="100%" height="100%">
       <gradientRect 
+        id="stairGradient"
         width="100%" height="100%"
         gradient-type="linear"
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
-        gradient-color1="#17f30c" gradient-color2="#ff0000"
+        gradient-color1="#fffc27" gradient-color2="#ff0000"
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="stairs2.png" />
@@ -55,11 +60,12 @@
   <section x="0%" y="151" width="130" height="50">
     <svg mask="#mask" width="100%" height="100%">
       <gradientRect 
+        id="activeGradient"
         width="100%" height="100%"
         gradient-type="linear"
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
-        gradient-color1="#b400ff" gradient-color2="#ff0000"
+        gradient-color1="#ff9d00" gradient-color2="#ff0000"
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="flash2.png" />
@@ -71,6 +77,7 @@
     <arc id="hrtArc" x="60" y="0" width="50" height="50" fill="#c00000" arc-width="2" start-angle="2" sweep-angle="0" /> 
     <image x="71" y="12" width="30" height="30" href="Twemoji.png" />
     <text id="myHR" />
+    <text id="myRestHR" />
     <image x="0" y="0" width="120" height="50" href="transparent.png" />
   </section>
 </svg>

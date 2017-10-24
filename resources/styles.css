@@ -12,6 +12,18 @@
   fill: #f8fcf8;
 }
 
+#myBattery {
+  font-size: 18;
+  font-family: System-Light;
+  text-length: 80;
+  text-anchor: end;
+  x: 208;
+  y: 25;
+  fill: #f8fcf8;
+  opacity: 0
+}
+
+
 #myMinute {
   font-size: 100;
   font-family: System-Light;
@@ -112,6 +124,16 @@
   text-length: 80;
   text-anchor: end;
   x: 50;
-  y: 35;
+  y: 23;
   fill: #f8fcf8;
+}
+
+#myRestHR {
+  font-size: 22;
+  font-family: System-Regular;
+  text-length: 80;
+  text-anchor: end;
+  x: 50;
+  y: 50;
+  fill: #c0c0c0;
 }

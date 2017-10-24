@@ -2,10 +2,13 @@ import clock from "clock";
 import document from "document";
 import userActivity from "user-activity";
 import { HeartRateSensor } from "heart-rate";
+import { user } from "user-profile";
+//import { battery } from "power";
+import * as mesaging from "messaging";
 
 import * as util from "../common/utils";
 
-// Update the clock every minute
+// Update the clock every second
 clock.granularity = "seconds";
 
 // Get a handle on the <text> element
@@ -14,17 +17,23 @@ let myMinute = document.getElementById("myMinute");
 let mySecond = document.getElementById("mySecond");
 let myDate = document.getElementById("myDate");
 let myDay = document.getElementById("myDay");
+let myBat = document.getElementById("myBattery");
 let dailysteps = document.getElementById("mySteps");
 let dailystairs = document.getElementById("myStairs");
 let dailycals = document.getElementById("myCals");
 let dailymins = document.getElementById("myMins");
 let currentheart = document.getElementById("myHR");
+let restingheart = document.getElementById("myRestHR");
 let heartRing = document.getElementById("hrtArc");
 let stepRect = document.getElementById("stepsRect");
 let calRect = document.getElementById("calsRect");
 let stairRect = document.getElementById("stairsRect");
 let minRect = document.getElementById("minsRect");
 let heart = document.getElementById("myHR");
+let stepgrad = document.getElementById("stepGradient");
+let calgrad = document.getElementById("calGradient");
+let stairgrad = document.getElementById("stairGradient");
+let activegrad = document.getElementById("activeGradient");
 let otherData = document.getElementById("otherData");
 var weekday = new Array(7);
 weekday[0] = "SONNTAG";
@@ -124,13 +133,31 @@ function updateClock() {
   let hours = util.monoDigits(util.zeroPad(today.getHours()));
   let mins = util.monoDigits(util.zeroPad(today.getMinutes()));
   let secs = util.zeroPad(today.getSeconds());
+  let bat = util.monoDigits(78);//util.monoDigits(Math.floor(battery.chargeLevel));
+  let rest = (user.restingHeartRate || "--");
   myHour.innerText = `${hours}`;
   myMinute.innerText = `${mins}`;
   mySecond.innerText = `${secs}`;
+  myBat.innerText = `${bat}` + "%";
   myDate.innerText = `${day}. ${monthName[month]}`;
-  myDay.innerText = `${weekday[wday]}`
+  myDay.innerText = `${weekday[wday]}`;
+  restingheart.innerText = "R:"+`${rest}`;
   updateStats();
 }
+
+// Update Settings
+/*messaging.peerSocket.onmessage = function(evt) {
+  myMinute.style.fill = evt.data.watchColor;
+  mySecond.style.fill = evt.data.watchColor;
+  stepgrad.style.gradientColor2 = evt.data.watchColor;
+  calgrad.style.gradientColor2 = evt.data.watchColor;
+  stairgrad.style.gradientColor2 = evt.data.watchColor;
+  activegrad.style.gradientColor2 = evt.data.watchColor;
+  stepgrad.style.gradientColor1 = evt.data.stepColor;
+  calgrad.style.gradientColor1 = evt.data.calColor;
+  stairgrad.style.gradientColor1 = evt.data.stairColor;
+  activegrad.style.gradientColor1 = evt.data.activeColor;
+}*/
 
 // Update the clock every tick event
 clock.ontick = () => updateClock();
