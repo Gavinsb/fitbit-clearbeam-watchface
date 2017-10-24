@@ -20,7 +20,7 @@
         gradient-type="linear"
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
-        gradient-color1="#fffc27" gradient-color2="#ff0000"
+        gradient-color1="#fffc27" gradient-color2="#cc0000"
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="footsteps-silhouette2.png" />
@@ -35,7 +35,7 @@
         gradient-type="linear"
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
-        gradient-color1="#ff9d00" gradient-color2="#ff0000"
+        gradient-color1="#ff9d00" gradient-color2="#cc0000"
       />
      </svg>
     <image x="97" y="15" width="13" height="20" href="purepulse-calorie2.png" />
@@ -50,7 +50,7 @@
         gradient-type="linear"
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
-        gradient-color1="#fffc27" gradient-color2="#ff0000"
+        gradient-color1="#fffc27" gradient-color2="#cc0000"
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="stairs2.png" />
@@ -65,7 +65,7 @@
         gradient-type="linear"
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
-        gradient-color1="#ff9d00" gradient-color2="#ff0000"
+        gradient-color1="#ff9d00" gradient-color2="#cc0000"
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="flash2.png" />

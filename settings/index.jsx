@@ -22,7 +22,9 @@ function Colors(props) {
             {color: '#4edcfb'},
             {color: '#ff9d00'},
             {color: '#17f30c'},
-            {color: '#b400ff'}         ]}
+            {color: '#b400ff'},
+            {color: '#fffc27'}
+          ]}
         />
       </Section>
       <Section title={<Text bold align="center">CaloriesBeam Color</Text>}>
@@ -32,7 +34,9 @@ function Colors(props) {
             {color: '#4edcfb'},
             {color: '#ff9d00'},
             {color: '#17f30c'},
-            {color: '#b400ff'}         ]}
+            {color: '#b400ff'},
+            {color: '#fffc27'}
+          ]}
         />
       </Section>
       <Section title={<Text bold align="center">ElevationGainBeam Color</Text>}>
@@ -42,7 +46,9 @@ function Colors(props) {
             {color: '#4edcfb'},
             {color: '#ff9d00'},
             {color: '#17f30c'},
-            {color: '#b400ff'}         ]}
+            {color: '#b400ff'},
+            {color: '#fffc27'}
+          ]}
         />
       </Section>
       <Section title={<Text bold align="center">ActiveBeam Color</Text>}>
@@ -52,7 +58,9 @@ function Colors(props) {
             {color: '#4edcfb'},
             {color: '#ff9d00'},
             {color: '#17f30c'},
-            {color: '#b400ff'}         ]}
+            {color: '#b400ff'},
+            {color: '#fffc27'}
+          ]}
         />
       </Section>
     </Page>

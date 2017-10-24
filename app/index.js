@@ -4,7 +4,7 @@ import userActivity from "user-activity";
 import { HeartRateSensor } from "heart-rate";
 import { user } from "user-profile";
 //import { battery } from "power";
-import * as mesaging from "messaging";
+import * as messaging from "messaging";
 
 import * as util from "../common/utils";
 
@@ -146,7 +146,7 @@ function updateClock() {
 }
 
 // Update Settings
-/*messaging.peerSocket.onmessage = function(evt) {
+messaging.peerSocket.onmessage = function(evt) {
   myMinute.style.fill = evt.data.watchColor;
   mySecond.style.fill = evt.data.watchColor;
   stepgrad.style.gradientColor2 = evt.data.watchColor;
@@ -157,7 +157,7 @@ function updateClock() {
   calgrad.style.gradientColor1 = evt.data.calColor;
   stairgrad.style.gradientColor1 = evt.data.stairColor;
   activegrad.style.gradientColor1 = evt.data.activeColor;
-}*/
+}
 
 // Update the clock every tick event
 clock.ontick = () => updateClock();
