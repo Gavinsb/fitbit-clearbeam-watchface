@@ -2,11 +2,17 @@
   <section x="131" y="0%" width="217" height="100%">
     <text id="myDay" />
     <text id="myHour" />
-    <text id="myBattery" />
-    <text id="myMinute" />
-    <text id="mySecond" />
+    <text id="myBattery">
+      <animate attributeName="opacity" begin="click" easing="ease-in" from="0" to="1" dur="1" />
+      <animate attributeName="opacity" begin="click+3" easing="ease-out" from="1" to="0" dur="1" />
+    </text>
+    <text id="myMinute" class="mainColor" />
+    <text id="mySecond" class="mainColor" />
     <text id="myDate" />
-    <image x="160" y="7" width="55" height="25" opacity="0" href="battery.png" />
+    <image x="200" y="10" width="15" height="15" opacity="0" href="battery2.png">
+      <animate attributeName="opacity" begin="click" easing="ease-in" from="0" to="1" dur="1" />
+      <animate attributeName="opacity" begin="click+3" easing="ease-out" from="1" to="0" dur="1" />
+    </image>
   </section>
   <line x1="130" y1="0%+5" x2="130" y2="100%-5" fill="#808080" stroke-width="1" />
   <mask id="mask">
@@ -21,6 +27,7 @@
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
         gradient-color1="#fffc27" gradient-color2="#cc0000"
+        class="mainGradient" 
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="footsteps-silhouette2.png" />
@@ -36,6 +43,7 @@
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
         gradient-color1="#ff9d00" gradient-color2="#cc0000"
+        class="mainGradient"
       />
      </svg>
     <image x="97" y="15" width="13" height="20" href="purepulse-calorie2.png" />
@@ -51,6 +59,7 @@
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
         gradient-color1="#fffc27" gradient-color2="#cc0000"
+        class="mainGradient"
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="stairs2.png" />
@@ -66,6 +75,7 @@
         gradient-x1="0" gradient-y1="0"
         gradient-x2="90" gradient-y2="0"
         gradient-color1="#ff9d00" gradient-color2="#cc0000"
+        class="mainGradient"
       />
      </svg>
     <image x="90" y="15" width="20" height="20" href="flash2.png" />
@@ -76,8 +86,14 @@
     <arc x="60" y="0" width="50" height="50" fill="#333333" arc-width="2" start-angle="2" sweep-angle="360" />
     <arc id="hrtArc" x="60" y="0" width="50" height="50" fill="#c00000" arc-width="2" start-angle="2" sweep-angle="0" /> 
     <image x="71" y="12" width="30" height="30" href="Twemoji.png" />
-    <text id="myHR" />
-    <text id="myRestHR" />
+    <text id="myHR" pointer-events="visible">
+      <animate attributeName="y" begin="click" easing="ease-in" from="35" to="23" dur="1" />
+      <animate attributeName="y" begin="click+3" easing="ease-out" from="23" to="35" dur="1" />
+    </text>
+    <text id="myRestHR">
+      <animate attributeName="opacity" begin="click" easing="ease-in" from="0" to="1" dur="1" />
+      <animate attributeName="opacity" begin="click+3" easing="ease-out" from="1" to="0" dur="1" />
+    </text>
     <image x="0" y="0" width="120" height="50" href="transparent.png" />
   </section>
 </svg>

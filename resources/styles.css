@@ -17,7 +17,7 @@
   font-family: System-Light;
   text-length: 80;
   text-anchor: end;
-  x: 208;
+  x: 199;
   y: 25;
   fill: #f8fcf8;
   opacity: 0
@@ -47,7 +47,7 @@
 
 #myDate {
   font-size: 25;
-  font-family: System-Light;
+  font-family: System-Regular;
   text-length: 40;
   text-anchor: start;
   x: 12;
@@ -57,7 +57,7 @@
 
 #myDay {
   font-size: 25;
-  font-family: System-Light;
+  font-family: System-Regular;
   text-length: 40;
   text-anchor: start;
   x: 12;
@@ -124,7 +124,7 @@
   text-length: 80;
   text-anchor: end;
   x: 50;
-  y: 23;
+  y: 35;
   fill: #f8fcf8;
 }
 
@@ -135,5 +135,6 @@
   text-anchor: end;
   x: 50;
   y: 50;
-  fill: #c0c0c0;
+  fill: #f8fcf8;
+  opacity: 0;
 }

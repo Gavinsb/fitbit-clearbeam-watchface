@@ -3,7 +3,7 @@ import document from "document";
 import userActivity from "user-activity";
 import { HeartRateSensor } from "heart-rate";
 import { user } from "user-profile";
-//import { battery } from "power";
+//import { battery } from "power";  //Not yet supported
 import * as messaging from "messaging";
 
 import * as util from "../common/utils";
@@ -11,7 +11,7 @@ import * as util from "../common/utils";
 // Update the clock every second
 clock.granularity = "seconds";
 
-// Get a handle on the <text> element
+// Get a handle on the various elements
 let myHour = document.getElementById("myHour");
 let myMinute = document.getElementById("myMinute");
 let mySecond = document.getElementById("mySecond");
@@ -58,12 +58,12 @@ monthName[11] = "NOVEMBER";
 monthName[12] = "DEZEMBER";
 
 function updateStats() {
-  // Get Goals to reach and curent values
+  // Get Goals to reach and current values
   const distanceGoal = userActivity.goals.distance;
-  const metricSteps = "steps";  // distance, calories, elevationGain, activeMinutes
+  const metricSteps = "steps";
   const amountSteps = userActivity.today.adjusted[metricSteps] || 0;
   const stepsGoal = userActivity.goals[metricSteps];
-  const metricCals = "calories";  // distance, calories, elevationGain, activeMinutes
+  const metricCals = "calories";
   const amountCals = userActivity.today.adjusted[metricCals] || 0;
   const caloriesGoal = userActivity.goals[metricCals];
   const metricActive = "activeMinutes";
@@ -72,7 +72,7 @@ function updateStats() {
   const metricElevation = "elevationGain";
   const amountElevation = userActivity.today.adjusted[metricElevation] || 0
   const elevationGoal = userActivity.goals[metricElevation];
-  let stepString = util.thsdDot(amountSteps);//amountSteps;
+  let stepString = util.thsdDot(amountSteps);
   let calString = util.thsdDot(amountCals);
   // The delivered values for caloriesGoal and elevationGoal are strange... thus a (personal) correction - if necessary
   if (caloriesGoal > 5000) {
@@ -123,7 +123,18 @@ hrm.onreading = function () {
 }
 hrm.start();
 
-// Update the <text> element with the current time
+function applyMainColor(colorVal) {
+  let items = document.getElementsByClassName("mainColor");
+  items.forEach(function(item) {
+    item.style.fill = colorVal;
+  });
+  let items = document.getElementsByClassName("mainGradient");
+  items.forEach(function(item) {
+    item.style.gradientColor2 = colorVal;
+  });
+}
+
+// Update the display
 function updateClock() {
   let today = new Date();
   let day = today.getDate();
@@ -133,7 +144,7 @@ function updateClock() {
   let hours = util.monoDigits(util.zeroPad(today.getHours()));
   let mins = util.monoDigits(util.zeroPad(today.getMinutes()));
   let secs = util.zeroPad(today.getSeconds());
-  let bat = util.monoDigits(78);//util.monoDigits(Math.floor(battery.chargeLevel));
+  let bat = util.monoDigits(78);//util.monoDigits(Math.floor(battery.chargeLevel)); //Not yet supported...
   let rest = (user.restingHeartRate || "--");
   myHour.innerText = `${hours}`;
   myMinute.innerText = `${mins}`;
@@ -145,22 +156,18 @@ function updateClock() {
   updateStats();
 }
 
-// Update Settings
-messaging.peerSocket.onmessage = function(evt) {
-  myMinute.style.fill = evt.data.watchColor;
-  mySecond.style.fill = evt.data.watchColor;
-  stepgrad.style.gradientColor2 = evt.data.watchColor;
-  calgrad.style.gradientColor2 = evt.data.watchColor;
-  stairgrad.style.gradientColor2 = evt.data.watchColor;
-  activegrad.style.gradientColor2 = evt.data.watchColor;
-  stepgrad.style.gradientColor1 = evt.data.stepColor;
-  calgrad.style.gradientColor1 = evt.data.calColor;
-  stairgrad.style.gradientColor1 = evt.data.stairColor;
-  activegrad.style.gradientColor1 = evt.data.activeColor;
-}
-
 // Update the clock every tick event
 clock.ontick = () => updateClock();
 
 // Don't start with a blank screen
 updateClock();
+
+// Update Settings
+messaging.peerSocket.onmessage = function(evt) {
+  console.log("New color: " + evt.data.watchColor);
+  applyMainColor(evt.data.watchColor);
+  stepgrad.style.gradientColor1 = evt.data.stepColor;
+  calgrad.style.gradientColor1 = evt.data.calColor;
+  stairgrad.style.gradientColor1 = evt.data.stairColor;
+  activegrad.style.gradientColor1 = evt.data.activeColor;
+}

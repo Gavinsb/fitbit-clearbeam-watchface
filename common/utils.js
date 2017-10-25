@@ -6,6 +6,7 @@ export function zeroPad(i) {
   return i;
 }
 
+// Add a dot between hundreds and thousands
 export function thsdDot(num) {
   var retString = num;
   if ( num > 999 ) {
@@ -21,6 +22,7 @@ export function thsdDot(num) {
   return retString;
 }
 
+// Simulate mono-fonts
 export function monoDigits(digits) {
   var ret = "";
   var str = digits.toString();
