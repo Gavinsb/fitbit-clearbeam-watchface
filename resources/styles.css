@@ -2,6 +2,14 @@
   viewport-fill: black;
 }
 
+.mainColor {
+  fill: #cc0000;
+}
+
+.mainGradient {
+  fill: #ff9d00;
+}
+
 #myHour {
   font-size: 100;
   font-family: System-Light;
@@ -18,7 +26,7 @@
   text-length: 80;
   text-anchor: end;
   x: 199;
-  y: 25;
+  y: 45;
   fill: #f8fcf8;
   opacity: 0
 }
@@ -31,7 +39,6 @@
   text-anchor: start;
   x: 12;
   y: 195;
-  fill: #cc0000;
 }
 
 #mySecond {
@@ -41,7 +48,6 @@
   text-anchor: start;
   x: 125;
   y: 150;
-  fill: #cc0000;
 }
 
 
