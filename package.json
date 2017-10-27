@@ -5,6 +5,10 @@
     "appDisplayName": "ClearBeam",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
-    "requestedPermissions": []
+    "requestedPermissions": [
+      "access_heart_rate",
+      "access_user_profile",
+      "access_activity"
+    ]
   }
 }

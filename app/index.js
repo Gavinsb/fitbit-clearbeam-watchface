@@ -4,13 +4,16 @@ import userActivity from "user-activity";
 import { HeartRateSensor } from "heart-rate";
 import { user } from "user-profile";
 import { locale } from "user-settings";
-//import { battery } from "power";  //Not yet supported
-import * as messaging from "messaging";
 
 import * as util from "../common/utils";
 
 // Update the clock every second
 clock.granularity = "seconds";
+
+// Counter for switching colors by click
+let counter = 0;
+// Switch for RestingHeartRate
+let switcher = false;
 
 // Get a handle on the various elements
 let myHour = document.getElementById("myHour");
@@ -18,12 +21,12 @@ let myMinute = document.getElementById("myMinute");
 let mySecond = document.getElementById("mySecond");
 let myDate = document.getElementById("myDate");
 let myDay = document.getElementById("myDay");
-let myBat = document.getElementById("myBattery");
 let dailysteps = document.getElementById("mySteps");
 let dailystairs = document.getElementById("myStairs");
 let dailycals = document.getElementById("myCals");
 let dailymins = document.getElementById("myMins");
 let leftsection = document.getElementById("leftSide");
+let rightsection = document.getElementById("rightSide");
 let currentheart = document.getElementById("myHR");
 let restingheart = document.getElementById("myRestHR");
 let heartRing = document.getElementById("hrtArc");
@@ -35,33 +38,11 @@ let stepBeam = document.getElementById("stepsBeam");
 let calBeam = document.getElementById("calsBeam");
 let stairBeam = document.getElementById("stairsBeam");
 let activeBeam = document.getElementById("activeBeam");
-let heart = document.getElementById("myHR");
 let stepgrad = document.getElementById("stepGradient");
 let calgrad = document.getElementById("calGradient");
 let stairgrad = document.getElementById("stairGradient");
 let activegrad = document.getElementById("activeGradient");
-let otherData = document.getElementById("otherData");
-var weekday = new Array(7);
-weekday[0] = "SONNTAG";
-weekday[1] = "MONTAG";
-weekday[2] = "DIENSTAG";
-weekday[3] = "MITTWOCH";
-weekday[4] = "DONNERSTAG";
-weekday[5] = "FREITAG";
-weekday[6] = "SAMSTAG";
-var monthName = new Array(12);
-monthName[0]  = "JANUAR";
-monthName[1]  = "FEBRUAR";
-monthName[2]  = "MÄRZ";
-monthName[3]  = "APRIL";
-monthName[4]  = "MAI";
-monthName[5]  = "JUNI";
-monthName[6]  = "JULI";
-monthName[7]  = "AUGUST";
-monthName[8]  = "SEPTEMBER";
-monthName[9]  = "OKTOBER";
-monthName[10] = "NOVEMBER";
-monthName[11] = "DEZEMBER";
+let colBtn = document.getElementById("colorBtn");
 
 function updateStats() {
   // Get Goals to reach and current values
@@ -119,7 +100,7 @@ function updateStats() {
 var hrm = new HeartRateSensor();
 
 hrm.onreading = function () {
-  currentheart.innerText=hrm.heartRate;
+  currentheart.innerText=(hrm.heartRate || "--");
   let heartAngle = Math.floor(360*(hrm.heartRate/190));
   if ( heartAngle > 360 ) {
     heartAngle = 360;
@@ -133,40 +114,27 @@ function updateClock() {
   let lang = locale.language;
   let today = new Date();
   let day = today.getDate();
-  //let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  //let wday = today.toLocaleString(`${lang}`, options).toUpperCase();
   let wday = today.getDay();
   let month = today.getMonth();
-  //let month = today.toLocaleString(`${lang}`, options).toUpperCase();
   let year = today.getFullYear();
   let hours = util.monoDigits(util.zeroPad(today.getHours()));
   let mins = util.monoDigits(util.zeroPad(today.getMinutes()));
   let secs = util.zeroPad(today.getSeconds());
-  let bat = util.monoDigits(78);//util.monoDigits(Math.floor(battery.chargeLevel)); //Not yet supported...
   let rest = (user.restingHeartRate || "--");
+  if ( (util.monthName[lang][month] == null) || (util.weekday[lang][wday] == null) ) {
+    lang = "en-US";
+  }
   myHour.innerText = `${hours}`;
   myMinute.innerText = `${mins}`;
   mySecond.innerText = `${secs}`;
-  myBat.innerText = `${bat}` + "%";
-  myDate.innerText = `${day}. ${monthName[month]}`;
-  //myDate.innerText = `${day}. ${month}`;
-  myDay.innerText = `${weekday[wday]}`;
-  //myDay.innerText = `${wday}`;
+  myDate.innerText = `${day}. ${util.monthName[lang][month].toUpperCase()}`;
+  myDay.innerText = `${util.weekday[lang][wday].toUpperCase()}`;
   restingheart.innerText = "R:"+`${rest}`;
   updateStats();
 }
 
 // Apply theme colors to elements
 function applyTheme(background, foreground) {
-  /*let items = document.getElementsByClassName("mainColor");
-  items.forEach(function(item) {
-    item.style.fill = background;
-  });
-  let items = document.getElementsByClassName("mainGradient");
-  items.forEach(function(item) {
-    item.style.fill = foreground;
-  });*/ //This did not work with ElementsByClasses...
-  console.log("Background: " + background + "Foreground: " + foreground)
   myMinute.style.fill = background;
   mySecond.style.fill = background;
   leftsection.style.fill = background;
@@ -180,22 +148,41 @@ function applyTheme(background, foreground) {
   activegrad.style.fill = foreground;
 }
 
+colBtn.onactivate = function(evt) {
+  console.log("Activated!");
+  switch (counter) {
+      case 0:
+        applyTheme("#5b4cff", "#17f30c"); //blau
+        counter = 1;
+        break;
+      case 1:
+        applyTheme("#ff9d00", "#ffff00"); //orange
+        counter = 2;
+        break;
+      case 2:
+        applyTheme("#b400ff", "#003aff"); //violett
+        counter = 3;
+        break;
+      case 3:
+        applyTheme("#008888", "#00eeee"); //cyan
+        counter =4;
+        break;
+      case 4:
+        applyTheme("#776600", "#eedd00"); //gold
+        counter = 5;
+        break;
+      case 5:
+        applyTheme("#cc0000", "#ffd900"); //red
+        counter = 0;
+        break;
+      default:
+        applyTheme("#cc0000", "#ff9d00"); //red
+        counter = 0;
+    }
+}
+
 // Update the clock every tick event
 clock.ontick = () => updateClock();
 
 // Don't start with a blank screen
 updateClock();
-
-messaging.peerSocket.onopen = () => {
-  console.log("App Socket Open");
-}
-
-messaging.peerSocket.close = () => {
-  console.log("App Socket Closed");
-}
-
-// Listen for the onmessage event
-messaging.peerSocket.onmessage = function(evt) {
-  console.log("device got: " + evt.data.background);
-  applyTheme(evt.data.background, evt.data.foreground);
-}

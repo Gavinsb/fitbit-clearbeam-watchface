@@ -144,3 +144,32 @@
   fill: #f8fcf8;
   opacity: 0;
 }
+
+#leftSide {
+  opacity: 1;
+}
+
+#stepsBeam {
+  opacity: 1;
+}
+#calsBeam {
+  opacity: 1;
+}
+#stairsBeam {
+  opacity: 1;
+}
+#activeBeam {
+  opacity: 1;
+}
+#stepGradient {
+  opacity: 0.7;
+}
+#calGradient {
+  opacity: 1;
+}
+#stairGradient {
+  opacity: 0.7;
+}
+#activeGradient {
+  opacity: 1;
+}
