@@ -67,8 +67,8 @@
    </svg>
   </section>
   <svg>
-  <use id="colorBtn" href="#square-button" y="0" height="50%" opacity="0" fill="fb-red">
-    <set href="#text"  attributeName="text-buffer" to="Color" />
+  <use id="colorBtn" href="#square-button" y="30" x="131" width="180" height="180" opacity="0.3" fill="#000000">
+    <set href="#text"  attributeName="text-buffer" to=" " />
   </use>
 </svg>
 </svg>
