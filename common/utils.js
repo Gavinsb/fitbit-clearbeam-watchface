@@ -42,6 +42,18 @@ export function hex2a(hex) {
   return str.toString();
 }
 
+//Formats the hour based on the user pref
+export function formatHour(hour, clockPref) {
+  if (clockPref == '12h'){
+    if(hour > 12) {
+      hour -= 12;
+    } else if(hour == 0) {
+      hour = "12";
+    }
+  }
+  return hour;
+}
+
 //Localisation for Day and Month
 export var weekday = [];
 export var monthName = [];
