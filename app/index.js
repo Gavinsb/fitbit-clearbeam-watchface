@@ -1,6 +1,7 @@
 import clock from "clock";
 import document from "document";
 import userActivity from "user-activity";
+import { preferences } from "user-settings";
 import { HeartRateSensor } from "heart-rate";
 import { user } from "user-profile";
 import { locale } from "user-settings";
@@ -9,7 +10,8 @@ import * as util from "../common/utils";
 
 // Update the clock every second
 clock.granularity = "seconds";
-
+//Clock preferences 12h/24h
+const clockPref = preferences.clockDisplay;
 // Counter for switching colors by click
 let counter = 0;
 // Switch for RestingHeartRate
@@ -117,7 +119,7 @@ function updateClock() {
   let wday = today.getDay();
   let month = today.getMonth();
   let year = today.getFullYear();
-  let hours = util.monoDigits(util.zeroPad(today.getHours()));
+  let hours = util.monoDigits(util.zeroPad(util.formatHour(today.getHours(), clockPref)));
   let mins = util.monoDigits(util.zeroPad(today.getMinutes()));
   let secs = util.zeroPad(today.getSeconds());
   let rest = (user.restingHeartRate || "--");
