@@ -28,7 +28,7 @@
   x: 199;
   y: 45;
   fill: #f8fcf8;
-  opacity: 0
+  opacity: 0;
 }
 
 
@@ -135,7 +135,7 @@
 }
 
 #myRestHR {
-  font-size: 22;
+  font-size: 24;
   font-family: System-Regular;
   text-length: 80;
   text-anchor: end;

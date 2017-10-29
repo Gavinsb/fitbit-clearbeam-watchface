@@ -1,11 +1,19 @@
 <svg class="background">
   <section x="131" y="0%" width="217" height="100%">
-    <svg id="rightSide">
+    <svg id="rightSide" pointer-events="visible">
       <text id="myDay" />
       <text id="myHour" />
+      <text id="myBattery">
+        <animate attributeName="opacity" begin="click" easing="ease-in" from="0" to="1" dur="0.5" />
+        <animate attributeName="opacity" begin="click+3" easing="ease-out" from="1" to="0" dur="0.5" />
+      </text>
       <text id="myMinute" class="mainColor" />
       <text id="mySecond" class="mainColor" />
       <text id="myDate" />
+      <image x="200" y="30" width="15" height="15" opacity="0" href="battery2.png">
+        <animate attributeName="opacity" begin="click" easing="ease-in" from="0" to="1" dur="0.5" />
+        <animate attributeName="opacity" begin="click+3" easing="ease-out" from="1" to="0" dur="0.5" />
+      </image>
     </svg>
   </section>
   <line x1="130" y1="0%+5" x2="130" y2="100%-5" fill="#808080" stroke-width="1" />
@@ -55,12 +63,12 @@
       <arc id="hrtArc" x="60" y="0" width="50" height="50" fill="#c00000" arc-width="2" start-angle="2" sweep-angle="0" /> 
       <image x="71" y="12" width="30" height="30" href="Twemoji.png" />
       <text id="myHR">
-        <animate attributeName="y" begin="click" easing="ease-in" from="35" to="23" dur="1" />
-        <animate attributeName="y" begin="click+3" easing="ease-out" from="23" to="35" dur="1" />
+        <animate attributeName="y" begin="click" easing="ease-in" from="35" to="23" dur="0.5" />
+        <animate attributeName="y" begin="click+4" easing="ease-out" from="23" to="35" dur="0.5" />
       </text>
       <text id="myRestHR">
-        <animate attributeName="opacity" begin="click" easing="ease-in" from="0" to="1" dur="0.5" />
-        <animate attributeName="opacity" begin="click+3" easing="ease-out" from="1" to="0" dur="0.5" />
+        <animate attributeName="opacity" begin="click+0.2" easing="ease-in" from="0" to="1" dur="0.5" />
+        <animate attributeName="opacity" begin="click+3.8" easing="ease-out" from="1" to="0" dur="0.5" />
       </text>
       <image x="0" y="0" width="120" height="50" href="transparent.png" />
     </section>

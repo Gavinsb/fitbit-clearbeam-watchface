@@ -1,6 +1,7 @@
 import clock from "clock";
 import document from "document";
 import userActivity from "user-activity";
+//import { battery } from "power";  //Not yet supported
 import { preferences } from "user-settings";
 import { HeartRateSensor } from "heart-rate";
 import { user } from "user-profile";
@@ -23,6 +24,7 @@ let myMinute = document.getElementById("myMinute");
 let mySecond = document.getElementById("mySecond");
 let myDate = document.getElementById("myDate");
 let myDay = document.getElementById("myDay");
+let myBat = document.getElementById("myBattery");
 let dailysteps = document.getElementById("mySteps");
 let dailystairs = document.getElementById("myStairs");
 let dailycals = document.getElementById("myCals");
@@ -122,22 +124,25 @@ function updateClock() {
   let hours = util.monoDigits(util.zeroPad(util.formatHour(today.getHours(), clockPref)));
   let mins = util.monoDigits(util.zeroPad(today.getMinutes()));
   let secs = util.zeroPad(today.getSeconds());
+  let bat = util.monoDigits(78);//util.monoDigits(Math.floor(battery.chargeLevel)); //Not yet supported...
   let rest = (user.restingHeartRate || "--");
   if ( (util.monthName[lang][month] == null) || (util.weekday[lang][wday] == null) ) {
     lang = "en-US";
   }
+  let prefix = lang.substring(0,2);
   myHour.innerText = `${hours}`;
   myMinute.innerText = `${mins}`;
   mySecond.innerText = `${secs}`;
-  myDate.innerText = `${day}. ${util.monthName[lang][month].toUpperCase()}`;
-  myDay.innerText = `${util.weekday[lang][wday].toUpperCase()}`;
+  myBat.innerText = `${bat}` + "%";
+  myDate.innerText = `${day}. ${util.monthName[lang][month].toUpperCase()}`;//`${day}. ${util.getMonthName(lang, month).toUpperCase()}`;
+  myDay.innerText = `${util.weekday[lang][wday].toUpperCase()}`;//`${util.getWeekDay(lang, wday).toUpperCase()}`;
   restingheart.innerText = "R:"+`${rest}`;
   updateStats();
 }
 
 // Apply theme colors to elements
 function applyTheme(background, foreground) {
-  myMinute.style.fill = background;
+  myMinute.style.fill = background
   mySecond.style.fill = background;
   leftsection.style.fill = background;
   stepBeam.style.fill = background;
