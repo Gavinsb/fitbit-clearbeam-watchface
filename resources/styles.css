@@ -33,14 +33,14 @@
 }
 
 #myBattery {
-  font-size: 18;
+  font-size: 20;
   font-family: System-Light;
   text-length: 80;
   text-anchor: end;
-  x: 199;
+  x: 195;
   y: 45;
   fill: #f8fcf8;
-  opacity: 0;
+  display: none;
 }
 
 

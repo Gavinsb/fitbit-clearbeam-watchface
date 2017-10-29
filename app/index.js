@@ -15,7 +15,7 @@ clock.granularity = "seconds";
 const clockPref = preferences.clockDisplay;
 // Counter for switching colors by click
 let counter = 0;
-// Switch for RestingHeartRate
+// Switch for Battery Display
 let switcher = false;
 
 // Get a handle on the various elements
@@ -25,6 +25,7 @@ let mySecond = document.getElementById("mySecond");
 let myDate = document.getElementById("myDate");
 let myDay = document.getElementById("myDay");
 let myBat = document.getElementById("myBattery");
+let myBatIcn = document.getElementById("batIcon");
 let dailysteps = document.getElementById("mySteps");
 let dailystairs = document.getElementById("myStairs");
 let dailycals = document.getElementById("myCals");
@@ -47,6 +48,7 @@ let calgrad = document.getElementById("calGradient");
 let stairgrad = document.getElementById("stairGradient");
 let activegrad = document.getElementById("activeGradient");
 let colBtn = document.getElementById("colorBtn");
+let batBtn = document.getElementById("batteryBtn");
 
 function updateStats() {
   // Get Goals to reach and current values
@@ -104,10 +106,12 @@ function updateStats() {
 var hrm = new HeartRateSensor();
 
 hrm.onreading = function () {
-  currentheart.innerText=(hrm.heartRate || "--");
-  let heartAngle = Math.floor(360*(hrm.heartRate/190));
+  currentheart.innerText = ( hrm.heartRate > 0 ) ? hrm.heartRate : "--";
+  let heartAngle = Math.floor(360*((hrm.heartRate-30)/200)); //heartrate lower than 30 should not occur and 200 schould be enough anyway
   if ( heartAngle > 360 ) {
     heartAngle = 360;
+  } else if ( heartAngle < 0 ) {
+    heartAngle = 0;
   }
   heartRing.sweepAngle = heartAngle;
 }
@@ -125,7 +129,7 @@ function updateClock() {
   let mins = util.monoDigits(util.zeroPad(today.getMinutes()));
   let secs = util.zeroPad(today.getSeconds());
   let bat = util.monoDigits(78);//util.monoDigits(Math.floor(battery.chargeLevel)); //Not yet supported...
-  let rest = (user.restingHeartRate || "--");
+  let rest = ( user.restingHeartRate > 0 ) ? user.restingHeartRate : "--";
   let prefix = lang.substring(0,2);
   if ( (typeof util.monthName[prefix] === 'undefined') || (typeof util.weekday[prefix] === 'undefined') ) {
     prefix = 'en';
@@ -160,7 +164,6 @@ function applyTheme(background, foreground) {
 }
 
 colBtn.onactivate = function(evt) {
-  console.log("Activated!");
   switch (counter) {
       case 0:
         applyTheme("#5b4cff", "#17f30c"); //blau
@@ -183,13 +186,33 @@ colBtn.onactivate = function(evt) {
         counter = 5;
         break;
       case 5:
-        applyTheme("#cc0000", "#ffd900"); //red
+        applyTheme("#7780a0", "#d9e1ff"); //blueish grey
+        counter = 6;
+        break;
+      case 6:
+        applyTheme("aqua", "azure");
+        counter = 7;
+        break;
+      case 7:
+        applyTheme("#cc0000", "#ffd900"); //red  
         counter = 0;
         break;
       default:
         applyTheme("#cc0000", "#ff9d00"); //red
         counter = 0;
     }
+}
+
+batBtn.onactivate = function(evt) {
+  if ( switcher === false) {
+    myBat.style.display = "inline";
+    myBatIcn.style.display = "inline";
+    switcher = true;
+  } else {
+    myBat.style.display = "none";
+    myBatIcn.style.display = "none";
+    switcher = false;
+  }
 }
 
 // Update the clock every tick event

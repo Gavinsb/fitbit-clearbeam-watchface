@@ -1,19 +1,13 @@
 <svg class="background">
   <section x="131" y="0%" width="217" height="100%">
-    <svg id="rightSide" pointer-events="visible">
+    <svg id="rightSide">
       <text id="myDay" />
       <text id="myHour" />
-      <text id="myBattery">
-        <animate attributeName="opacity" begin="click" easing="ease-in" from="0" to="1" dur="0.5" />
-        <animate attributeName="opacity" begin="click+3" easing="ease-out" from="1" to="0" dur="0.5" />
-      </text>
+      <text id="myBattery" />
       <text id="myMinute" class="mainColor" />
       <text id="mySecond" class="mainColor" />
       <text id="myDate" />
-      <image x="200" y="30" width="15" height="15" opacity="0" href="battery2.png">
-        <animate attributeName="opacity" begin="click" easing="ease-in" from="0" to="1" dur="0.5" />
-        <animate attributeName="opacity" begin="click+3" easing="ease-out" from="1" to="0" dur="0.5" />
-      </image>
+      <image id="batIcon" x="198" y="30" width="15" height="15" display="none" href="battery2.png" />
     </svg>
   </section>
   <line x1="130" y1="0%+5" x2="130" y2="100%-5" fill="#808080" stroke-width="1" />
@@ -75,8 +69,11 @@
    </svg>
   </section>
   <svg>
-  <use id="colorBtn" href="#square-button" y="30" x="131" width="180" height="180" opacity="0.3" fill="#000000">
-    <set href="#text"  attributeName="text-buffer" to=" " />
-  </use>
-</svg>
+    <use id="colorBtn" href="#square-button" y="30" x="131" width="175" height="180" opacity="0.3" fill="#000000">
+      <set href="#text"  attributeName="text-buffer" to=" " />
+    </use>
+    <use id="batteryBtn" href="#square-button" y="0" x="299" width="50" height="60" opacity="0.3" fill="#000000">
+      <set href="#text"  attributeName="text-buffer" to=" " />
+    </use>
+  </svg>
 </svg>
