@@ -8,6 +8,18 @@
 
 .mainGradient {
   fill: #ff9d00;
+  x: 10;
+  y: 5;
+  width: 100;
+  height: 2;
+}
+
+.overlayRect {
+  fill: #444444;
+  x: 10;
+  y: 5;
+  width: 100;
+  height: 2;
 }
 
 #myHour {

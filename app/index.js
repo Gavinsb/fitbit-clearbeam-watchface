@@ -126,16 +126,20 @@ function updateClock() {
   let secs = util.zeroPad(today.getSeconds());
   let bat = util.monoDigits(78);//util.monoDigits(Math.floor(battery.chargeLevel)); //Not yet supported...
   let rest = (user.restingHeartRate || "--");
-  if ( (util.monthName[lang][month] == null) || (util.weekday[lang][wday] == null) ) {
-    lang = "en-US";
-  }
   let prefix = lang.substring(0,2);
+  if ( (typeof util.monthName[prefix] === 'undefined') || (typeof util.weekday[prefix] === 'undefined') ) {
+    prefix = 'en';
+  }
   myHour.innerText = `${hours}`;
   myMinute.innerText = `${mins}`;
   mySecond.innerText = `${secs}`;
   myBat.innerText = `${bat}` + "%";
-  myDate.innerText = `${day}. ${util.monthName[lang][month].toUpperCase()}`;//`${day}. ${util.getMonthName(lang, month).toUpperCase()}`;
-  myDay.innerText = `${util.weekday[lang][wday].toUpperCase()}`;//`${util.getWeekDay(lang, wday).toUpperCase()}`;
+  if (prefix === 'en') {
+    myDate.innerText = `${util.monthName[prefix][month].toUpperCase()} ${day}`;//`${util.getMonthName(prefix, month).toUpperCase()} ${day}`; 
+  } else {
+    myDate.innerText = `${day}. ${util.monthName[prefix][month].toUpperCase()}`;//`${day}. ${util.getMonthName(prefix, month).toUpperCase()}`; 
+  }
+  myDay.innerText = `${util.weekday[prefix][wday].toUpperCase()}`;//`${util.getWeekDay(prefix, wday).toUpperCase()}`;
   restingheart.innerText = "R:"+`${rest}`;
   updateStats();
 }

@@ -54,164 +54,100 @@ export function formatHour(hour, clockPref) {
   return hour;
 }
 
-//Localisation for Day and Month the switch seems to be slower than the array...
-/*export function getWeekDay(lang, num) {
-	var weekday = [];
-	var prefix = lang.substring(0,2);
-	switch (prefix) {
-		case "de":
-			weekday = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-			break;
-		case "en":
-			weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-			break;
-		case "es":
-			weekday = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-			break;
-		case "fr":
-			weekday = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
-			break;
-		case "it":
-			weekday = ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
-			break;
-		case "pt":
-			weekday = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
-			break;
-		case "nl":
-			weekday = ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
-			break;
-		case "bs":
-			weekday = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
-			break;
-		case "ca":
-			weekday = ["diumenge", "dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte"];
-			break;
-		case "et":
-			weekday = ["pühapäev", "esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev"];
-			break;
-		case "eu":
-			weekday = ["igandea", "astelehena", "asteartea", "asteazkena", "osteguna", "ostirala", "larunbata"];
-			break;
-		case "fi":
-			weekday = ["sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai"];
-			break;
-		case "fo":
-			weekday = ["sunnudagur", "mánadagur", "týsdagur", "mikudagur", "hósdagur", "fríggjadagur", "leygardagur"];
-			break;
-		case "gl":
-			weekday = ["domingo", "luns", "martes", "mércores", "xoves", "venres", "sábado"];
-			break;
-		case "hr":
-			weekday = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
-			break;
-		case "hu":
-			weekday = ["vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat"];
-			break;
-		case "id":
-			weekday = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-			break;
-		case "pl":
-			weekday = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
-			break;
-		default:
-			weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	}
-	return weekday[num];
-}
+//Localisation for Day and Month; the switch seems to be slower than the array...
+export var weekday = {
+	de: ["Sonntag", "Montag", "Dienstag", "Mitwoch", "Donnerstag", "Freitag", "Samstag"],
+	da: ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"],
+	en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+	es: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+	fr: ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+	nl: ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"],
+	it: ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"],
+	pt: ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"],
+	pl: ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"]/*,
+	af: ["Sondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrydag", "Saterdag"],
+	bs: ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"],
+	ca: ["diumenge", "dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte"],
+	cs: ["neděle", "pondělí", "úterý", "středa", "čtvrtek", "pátek", "sobota"],
+	cy: ["Dydd Sul", "Dydd Llun", "Dydd Mawrth", "Dydd Mercher", "Dydd Iau", "Dydd Gwener", "Dydd Sadwrn"],
+	et: ["pühapäev", "esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev"],
+	eu: ["igandea", "astelehena", "asteartea", "asteazkena", "osteguna", "ostirala", "larunbata"],
+	fi: ["sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai"],
+	fo: ["sunnudagur", "mánadagur", "týsdagur", "mikudagur", "hósdagur", "fríggjadagur", "leygardagur"],
+	gl: ["domingo", "luns", "martes", "mércores", "xoves", "venres", "sábado"],
+	hr: ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"],
+	hu: ["vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat"],
+	id: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]*/
+};
 
-export function getMonthName(lang, num) {
-	var monthname = [];
-	var prefix = lang.substring(0,2);
-	switch (prefix) {
-		case "de":
-			monthname = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-			break;
-		case "en":
-			monthname = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-			break;
-		case "es":
-			monthname = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-			break;
-		case "fr":
-			monthname = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-			break;
-		case "it":
-			monthname = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
-			break;
-		case "pt":
-			monthname = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
-			break;
-		case "nl":
-			monthname = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
-			break;
-		case "bs":
-			monthname = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
-			break;
-		case "ca":
-			monthname = ["gener", "febrer", "març", "abril", "maig", "juny", "juliol", "agost", "setembre", "octubre", "novembre", "desembre"];
-			break;
-		case "et":
-			monthname = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
-			break;
-		case "eu":
-			monthname = ["urtarrila", "otsaila", "martxoa", "apirila", "maiatza", "ekaina", "uztaila", "abuztua", "iraila", "urria", "azaroa", "abendua"];
-			break;
-		case "fi":
-			monthname = ["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"];
-			break;
-		case "fo":
-			monthname = ["januar", "februar", "mars", "apríl", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"];
-			break;
-		case "gl":
-			monthname = ["xaneiro", "febreiro", "marzo", "abril", "maio", "xuño", "xullo", "agosto", "setembro", "outubro", "novembro", "decembro"];
-			break;
-		case "hr":
-			monthname = ["siječanj", "veljača", "ožujak", "travanj", "svibanj", "lipanj", "srpanj", "kolovoz", "rujan", "listopad", "studeni", "prosinac"];
-			break;
-		case "hu":
-			monthname = ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"];
-			break;
-		case "id":
-			monthname = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];
-			break;
-		case "pl":
-			monthname = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
-			break;
-		default:
-			monthname = ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
-	}
-	return monthname[num];
-}*/
-
-export var weekday = [];
+export var monthName = {
+	de: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+	da: ["januar", "februar", "marts", "april", "maj", "juni", "juli", "august", "september", "oktober", "november", "december"],
+	en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+	es: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+	fr: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+	nl: ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"],
+	it: ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"],
+	pt: ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"],
+	pl: ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"]/*,
+	af: ["Januarie", "Februarie", "Maart", "April", "Mei", "Junie", "Julie", "Augustus", "September", "Oktober", "November", "Desember"],
+	bs: ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"],
+	ca: ["gener", "febrer", "març", "abril", "maig", "juny", "juliol", "agost", "setembre", "octubre", "novembre", "desembre"],
+	cs: ["leden", "únor", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"],
+	cy: ["Ionawr", "Chwefror", "Mawrth", "Ebrill", "Mai", "Mehefin", "Gorffennaf", "Awst", "Medi", "Hydref", "Tachwedd", "Rhagfyr"],
+	et: ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"],
+	eu: ["urtarrila", "otsaila", "martxoa", "apirila", "maiatza", "ekaina", "uztaila", "abuztua", "iraila", "urria", "azaroa", "abendua"],
+	fi: ["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"],
+	fo: ["januar", "februar", "mars", "apríl", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"],
+	gl: ["xaneiro", "febreiro", "marzo", "abril", "maio", "xuño", "xullo", "agosto", "setembro", "outubro", "novembro", "decembro"],
+	hr: ["siječanj", "veljača", "ožujak", "travanj", "svibanj", "lipanj", "srpanj", "kolovoz", "rujan", "listopad", "studeni", "prosinac"],
+	hu: ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"],
+	id: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"]*/
+};
+/*export var weekday = [];
 export var monthName = [];
-weekday["de-DE"] = ["Sonntag", "Montag", "Dienstag", "Mitwoch", "Donnerstag", "Freitag", "Samstag"];
-monthName["de-DE"] = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-weekday["da-DK"]=["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
-monthName["da-DK"]=["januar", "februar", "marts", "april", "maj", "juni", "juli", "august", "september", "oktober", "november", "december"];
-weekday["de-AT"]=["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-monthName["de-AT"]=["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-weekday["de-CH"]=["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-monthName["de-CH"]=["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-weekday["de-LI"]=["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-monthName["de-LI"]=["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-weekday["de-LU"]=["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-monthName["de-LU"]=["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-weekday["en-GB"]=["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-monthName["en-GB"]=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-weekday["en-US"]=["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-monthName["en-US"]=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-weekday["es-ES"]=["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-monthName["es-ES"]=["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-weekday["fr-BE"]=["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
-monthName["fr-BE"]=["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-weekday["fr-FR"]=["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
-monthName["fr-FR"]=["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-weekday["nl-BE"]=["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
-monthName["nl-BE"]=["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
-weekday["nl-NL"]=["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
-monthName["nl-NL"]=["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
-weekday["it-CH"]=["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
-monthName["it-CH"]=["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
-weekday["it-IT"]=["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
-monthName["it-IT"]=["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+weekday["de"] = ["Sonntag", "Montag", "Dienstag", "Mitwoch", "Donnerstag", "Freitag", "Samstag"];
+monthName["de"] = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+weekday["da"]=["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
+monthName["da"]=["januar", "februar", "marts", "april", "maj", "juni", "juli", "august", "september", "oktober", "november", "december"];
+weekday["en"]=["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+monthName["en"]=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+weekday["es"]=["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+monthName["es"]=["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+weekday["fr"]=["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+monthName["fr"]=["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+weekday["nl"]=["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
+monthName["nl"]=["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
+weekday["it"]=["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
+monthName["it"]=["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+weekday["pt"]=["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+monthName["pt"]=["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+weekday["pl"]=["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
+monthName["pl"]=["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
+weekday["af"]=["Sondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrydag", "Saterdag"];
+monthName["af"]=["Januarie", "Februarie", "Maart", "April", "Mei", "Junie", "Julie", "Augustus", "September", "Oktober", "November", "Desember"];
+weekday["bs"]=["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+monthName["bs"]=["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
+weekday["ca"]=["diumenge", "dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte"];
+monthName["ca"]=["gener", "febrer", "març", "abril", "maig", "juny", "juliol", "agost", "setembre", "octubre", "novembre", "desembre"];
+weekday["cs"]=["neděle", "pondělí", "úterý", "středa", "čtvrtek", "pátek", "sobota"];
+monthName["cs"]=["leden", "únor", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"];
+weekday["cy"]=["Dydd Sul", "Dydd Llun", "Dydd Mawrth", "Dydd Mercher", "Dydd Iau", "Dydd Gwener", "Dydd Sadwrn"];
+monthName["cy"]=["Ionawr", "Chwefror", "Mawrth", "Ebrill", "Mai", "Mehefin", "Gorffennaf", "Awst", "Medi", "Hydref", "Tachwedd", "Rhagfyr"];
+weekday["et"]=["pühapäev", "esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev"];
+monthName["et"]=["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
+weekday["eu"]=["igandea", "astelehena", "asteartea", "asteazkena", "osteguna", "ostirala", "larunbata"];
+monthName["eu"]=["urtarrila", "otsaila", "martxoa", "apirila", "maiatza", "ekaina", "uztaila", "abuztua", "iraila", "urria", "azaroa", "abendua"];
+weekday["fi"]=["sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai"];
+monthName["fi"]=["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"];
+weekday["fo"]=["sunnudagur", "mánadagur", "týsdagur", "mikudagur", "hósdagur", "fríggjadagur", "leygardagur"];
+monthName["fo"]=["januar", "februar", "mars", "apríl", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"];
+weekday["gl"]=["domingo", "luns", "martes", "mércores", "xoves", "venres", "sábado"];
+monthName["gl"]=["xaneiro", "febreiro", "marzo", "abril", "maio", "xuño", "xullo", "agosto", "setembro", "outubro", "novembro", "decembro"];
+weekday["hr"]=["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+monthName["hr"]=["siječanj", "veljača", "ožujak", "travanj", "svibanj", "lipanj", "srpanj", "kolovoz", "rujan", "listopad", "studeni", "prosinac"];
+weekday["hu"]=["vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat"];
+monthName["hu"]=["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"];
+weekday["id"]=["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+monthName["id"]=["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];*/
+
