@@ -7,7 +7,8 @@
       <text id="myMinute" class="mainColor" />
       <text id="mySecond" class="mainColor" />
       <text id="myDate" />
-      <image id="batIcon" x="198" y="30" width="15" height="15" display="none" href="battery2.png" />
+      <image id="batIcon" x="195" y="30" width="20" height="20" display="none" href="battery2.png" />
+      <rect id="batRect" x="200" y="34" width="10" height="15" fill="#000000" />
     </svg>
   </section>
   <line x1="130" y1="0%+5" x2="130" y2="100%-5" fill="#808080" stroke-width="1" />
@@ -23,7 +24,14 @@
       </svg>
       <image x="90" y="15" width="20" height="20" href="footsteps-silhouette2.png" />
       <rect id="stepsRect" class="overlayRect" />
-    <text id="mySteps" />
+    <text id="mySteps" class="valueDisplay">
+      <animate attributeName="x" begin="click" easing="ease-in" from="85" to="-50" dur="0.5" />
+      <animate attributeName="x" begin="click+4" easing="ease-out" from="-50" to="85" dur="0.5" />
+    </text>
+    <text id="myStepsGoal" class="goalDisplay">
+      <animate attributeName="opacity" begin="click+0.2" easing="ease-in" from="0" to="1" dur="0.5" />
+      <animate attributeName="opacity" begin="click+3.8" easing="ease-out" from="1" to="0" dur="0.5" /> 
+    </text> 
     </section>
     <section x="0%" y="51" width="130" height="50">
       <svg mask="#mask" width="100%" height="100%">
@@ -32,7 +40,14 @@
       </svg>
       <image x="97" y="15" width="13" height="20" href="purepulse-calorie2.png" />
       <rect id="calsRect" class="overlayRect" />
-      <text id="myCals" />
+      <text id="myCals" class="valueDisplay">
+        <animate attributeName="x" begin="click" easing="ease-in" from="85" to="-50" dur="0.5" />
+        <animate attributeName="x" begin="click+4" easing="ease-out" from="-50" to="85" dur="0.5" />
+      </text>
+      <text id="myCalsGoal" class="goalDisplay">
+        <animate attributeName="opacity" begin="click+0.2" easing="ease-in" from="0" to="1" dur="0.5" />
+        <animate attributeName="opacity" begin="click+3.8" easing="ease-out" from="1" to="0" dur="0.5" /> 
+      </text> 
     </section>
     <section x="0%" y="101" width="130" height="50">
       <svg mask="#mask" width="100%" height="100%">
@@ -41,7 +56,14 @@
       </svg>
       <image x="90" y="15" width="20" height="20" href="stairs2.png" />
       <rect id="stairsRect" class="overlayRect" />
-      <text id= "myStairs" />
+      <text id= "myStairs" class="valueDisplay">
+        <animate attributeName="x" begin="click" easing="ease-in" from="85" to="-50" dur="0.5" />
+        <animate attributeName="x" begin="click+4" easing="ease-out" from="-50" to="85" dur="0.5" />
+      </text>
+      <text id="myStairsGoal" class="goalDisplay">
+        <animate attributeName="opacity" begin="click+0.2" easing="ease-in" from="0" to="1" dur="0.5" />
+        <animate attributeName="opacity" begin="click+3.8" easing="ease-out" from="1" to="0" dur="0.5" /> 
+      </text> 
     </section>
     <section x="0%" y="151" width="130" height="50">
       <svg mask="#mask" width="100%" height="100%">
@@ -50,7 +72,14 @@
       </svg>
       <image x="90" y="15" width="20" height="20" href="flash2.png" />
       <rect id="minsRect" class="overlayRect" />
-      <text id="myMins" />
+      <text id="myMins" class="valueDisplay">
+        <animate attributeName="x" begin="click" easing="ease-in" from="85" to="-50" dur="0.5" />
+        <animate attributeName="x" begin="click+4" easing="ease-out" from="-50" to="85" dur="0.5" />
+      </text>
+      <text id="myMinsGoal" class="goalDisplay">
+        <animate attributeName="opacity" begin="click+0.2" easing="ease-in" from="0" to="1" dur="0.5" />
+        <animate attributeName="opacity" begin="click+3.8" easing="ease-out" from="1" to="0" dur="0.5" /> 
+      </text> 
     </section>
     <section x="0%" y="200" width="130" height="50">
       <arc x="60" y="0" width="50" height="50" fill="#333333" arc-width="2" start-angle="2" sweep-angle="360" />

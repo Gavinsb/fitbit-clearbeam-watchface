@@ -3,11 +3,11 @@
 }
 
 .mainColor {
-  fill: #cc0000;
+  fill: #770000;
 }
 
 .mainGradient {
-  fill: #ff9d00;
+  fill: #ff4747;
   x: 10;
   y: 5;
   width: 100;
@@ -22,6 +22,27 @@
   height: 2;
 }
 
+.valueDisplay{
+  font-size: 25;
+  font-family: System-Regular;
+  text-length: 30;
+  text-anchor: end;
+  x: 85;
+  y: 35;
+  fill: #f8fcf8;
+}
+
+.goalDisplay {
+  font-size: 25;
+  font-family: System-Regular;
+  text-length: 80;
+  text-anchor: end;
+  x: 85;
+  y: 35;
+  fill: #808080;
+  opacity: 0;
+}
+
 #myHour {
   font-size: 100;
   font-family: System-Light;
@@ -33,12 +54,12 @@
 }
 
 #myBattery {
-  font-size: 20;
+  font-size: 22;
   font-family: System-Light;
   text-length: 80;
   text-anchor: end;
-  x: 195;
-  y: 45;
+  x: 190;
+  y: 48;
   fill: #f8fcf8;
   display: none;
 }
@@ -51,6 +72,7 @@
   text-anchor: start;
   x: 12;
   y: 195;
+  fill: #bb0000;
 }
 
 #mySecond {
@@ -60,6 +82,7 @@
   text-anchor: start;
   x: 125;
   y: 150;
+  fill: #bb0000;
 }
 
 
@@ -85,54 +108,24 @@
 
 
 #mySteps {
-  font-size: 25;
-  font-family: System-Regular;
-  text-length: 80;
-  text-anchor: end;
-  x: 85;
-  y: 35;
-  fill: #f8fcf8;
+  opacity: 1;
 }
 
 #myStairs {
-  font-size: 25;
-  font-family: System-Regular;
-  text-length: 30;
-  text-anchor: end;
-  x: 85;
-  y: 35;
-  fill: #f8fcf8;
+  opacity: 1;
 }
 
 
 #myCals {
-  font-size: 25;
-  font-family: System-Regular;
-  text-length: 80;
-  text-anchor: end;
-  x: 85;
-  y: 35;
-  fill: #f8fcf8;
+  opacity: 1;
 }
 
 #myMins {
-  font-size: 25;
-  font-family: System-Regular;
-  text-length: 30;
-  text-anchor: end;
-  x: 85;
-  y: 35;
-  fill: #f8fcf8;
+  opacity: 1;
 }
 
 #myDist {
-  font-size: 25;
-  font-family: System-Regular;
-  text-length: 30;
-  text-anchor: end;
-  x: 85;
-  y: 35;
-  fill: #f8fcf8;
+  opacity: 1;
 }
 
 
