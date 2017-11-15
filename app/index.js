@@ -284,9 +284,10 @@ messaging.peerSocket.onmessage = function(evt) {
   }
   if (typeof maingrey === 'undefined' || util.hexcolor(maingrey) == false) {
     maingrey = "#777777";
+    console.log("Maincolor set to #777777 due to error");
   }
-  gradientgrey = evt.data.gradient;
   if (typeof gradientgrey === 'undefined' || util.hexcolor(gradientgrey) == false) {
     gradientgrey = "#eeeeee";
+    console.log("Gradientcolor set to #eeeeee due to error");
   }
 }

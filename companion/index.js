@@ -37,11 +37,4 @@ settingsStorage.onchange = function(evt) {
     sendValue(KEY_MAIN, mainString);
     sendValue(KEY_GRADIENT, gradientString);
   }
-  /*if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
-    //let data = JSON.parse(evt.newValue);
-    messaging.peerSocket.send({KEY_MAIN: settingsStorage.getItem(KEY_MAIN)});
-    messaging.peerSocket.send({KEY_GRADIENT: settingsStorage.getItem(KEY_GRADIENT)});
-  } else {
-    console.log("companion - no connection");
-  }*/
 }
