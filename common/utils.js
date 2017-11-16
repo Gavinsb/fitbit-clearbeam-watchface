@@ -66,7 +66,7 @@ export function hexcolor(colString) {
 
 //Localisation for Day and Month; the switch seems to be slower than the array...
 export var weekday = {
-	de: ["Sonntag", "Montag", "Dienstag", "Mitwoch", "Donnerstag", "Freitag", "Samstag"],
+	de: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
 	da: ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"],
 	en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 	es: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
